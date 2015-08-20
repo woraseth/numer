@@ -8,7 +8,7 @@ def jacobi(m, x0=None, eps=1e-5, round=100):
   for __ in range(round):
     for i in range(n):
       s = sum(-m[i][j] * x0[j] for j in range(n) if i != j)
-      x1[i] = (s + m[i][n]) / m[i][i]
+      x1[i] = (m[i][n] + s) / m[i][i]
     if all(abs(x1[i]-x0[i]) < eps for i in range(n)):
       return x1 
     x0, x1 = x1, x0
@@ -16,7 +16,11 @@ def jacobi(m, x0=None, eps=1e-5, round=100):
   
 if __name__ == '__main__':
   m = [[4,3.2,0.5,9.2],[2.2,3,-0.3,0.9],[-3.1,-0.2,4,7]]
-  print(jacobi(m))    # [2.99999690266, -1.50000344854, 4.0000033967]
+  print(jacobi(m))
 
 # author: Worasait Suwannik
 # date: Apr 2015
+
+  # m = [[5,3,41],[2,7,57]]
+
+ 
