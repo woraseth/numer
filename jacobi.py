@@ -1,6 +1,6 @@
 from matrix import height
 from matrix import column
- 
+ asdf
 def jacobi(m, x0=None, eps=1e-5, round=100):
   n  = height(m)
   b  = column(m, n)
