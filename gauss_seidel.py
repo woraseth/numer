@@ -2,17 +2,16 @@ from matrix import *
  
 def gauss_seidel(m, x0=None, eps=0.00001, round=1000):
   n  = height(m)
-  b  = column(m, n)
   x0 = [0] * n if x0 == None else x0
-  x1 = x0[:]                 # change
+  x1 = x0[:]      
  
   for __ in range(round):
     for i in range(n):
       s = sum(-m[i][j] * x1[j] for j in range(n) if i != j)   # change
-      x1[i] = (s + b[i]) / m[i][i]
+      x1[i] = (m[i][n] + s) / m[i][i]
     if all(abs(x1[i]-x0[i]) < eps for i in range(n)):
 	    return x1 
-    x0 = x1[:]              # change
+    x0 = x1[:]    
   raise ValueError('Solution does not converge')
 
 if __name__ == '__main__':
@@ -21,6 +20,3 @@ if __name__ == '__main__':
 
 # author: Worasait Suwannik http://bit.ly/wannik
 # date: May 2015
-
-
-
