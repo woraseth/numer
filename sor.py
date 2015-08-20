@@ -10,8 +10,8 @@ def sor(m, w=1.25, x0=None, eps=1e-5, max_iteration=100):
   
   for __ in range(max_iteration):
     for i in range(n):
-      s = sum(-m[i][j] * x1[j] for j in range(n) if i != j)   # change
-      x1[i] = w*(s + b[i])/m[i][i] + (1 - w)*x0[i]
+      s = sum(-m[i][j] * x1[j] for j in range(n) if i != j)  
+      x1[i] = w*(m[i][n]+s)/m[i][i] + (1-w)*x0[i]
     if all(abs(x1[i]-x0[i]) < eps for i in range(n)):
 	    return x1 
     x0 = x1[:]             
