@@ -1,18 +1,32 @@
 def secant(f, x0, x1, eps=0.001, max_iteration=100):
+  """
+  Parameters
+  ----------
+  f  : function
+  x0 : initial guess
+  x1 : initial guess
+
+  Returns
+  -------  
+  float : a root of function f
+  
+  Raises
+  ------
+  ValueError : if cannot find root???
+  """
   for __ in range(max_iteration):
-    dx = (x0 - x1) * f(x1) / (f(x0) - f(x1)) 
+    dx = (x1 - x0) * f(x1) / (f(x1) - f(x0)) 
     x0 = x1
     x1 -= dx
     # terminate?
-    print(dx)
-    if abs(dx) < eps:
+    if abs(f(x1)) < eps and abs(dx) < eps:
       return x1 
   raise ValueError('Cannot find root')
 
 if __name__ == '__main__':
   f = lambda x : x**5 + x**3 +x**2 - 1  
-  #x = secant(f, 1, 2) 
-  x = secant(f, -3, -2)     # gave incorrect result
+  x = secant(f, 1, 2) 
+  #x = secant(f, -3, -2)     # gave incorrect result
   
   #f = lambda x : 5*x**3 - 4*x +1
   #x = secant(f, -3, -2) 
