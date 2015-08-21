@@ -3,8 +3,8 @@ def secant(f, x0, x1, eps=0.001, max_iteration=100):
   Parameters
   ----------
   f  : function
-  x0 : initial guess
-  x1 : initial guess
+  x0 : float : initial guess
+  x1 : float : initial guess
 
   Returns
   -------  
