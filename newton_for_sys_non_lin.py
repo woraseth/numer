@@ -5,6 +5,7 @@ def newton_nonlinear(f, j, x0, sys_lin_meth, eps=1e-5, max_iteration=100):
   f  : list of functions
   j  : list of list of functions : Jacobian matrix
   x0 : list of floats            : initial guess
+  sys_lin_meth : function : solve system of linear equations
   
   Returns
   -------  
@@ -69,6 +70,7 @@ if __name__ == '__main__':
     ]
   ]
   x0 = [0.1, 0.1, -0.1]
+  
   #from gauss import *
   #x = newton_nonlinear(f, j, x0, gaussian_elimination)
   from gauss_seidel import *
