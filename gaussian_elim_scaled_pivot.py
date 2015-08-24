@@ -1,15 +1,28 @@
-# gaussian elimination with scaled pivot
-
 from matrix import height
- 
+
 def gaussian_elimination_with_scaled_pivot(m):
+  """
+  Parameters
+  ----------
+  m  : list of list of floats (matrix)
+
+  Returns
+  -------  
+  list of floats
+      solution to the system of linear equation
+  
+  Raises
+  ------
+  ValueError
+      no unique solution
+  """
   # forward elimination
   n = height(m)
   scale = [max([abs(m[i][j]) for j in range(n)]) for i in range(n)] 
   for i in range(n):
     pivot(m, n, i, scale)
     for j in range(i+1, n):
-      m[j] = [m[j][k] - (m[i][k]*m[j][i]/m[i][i]) for k in range(n+1)]
+      m[j] = [m[j][k] - m[i][k]*m[j][i]/m[i][i] for k in range(n+1)]
 
   if m[n-1][n-1] == 0: raise ValueError('No unique solution')
 
@@ -43,6 +56,7 @@ if __name__ == '__main__':
   #m = [[2.11,-4.21,0.92,2.01],[4.01,10.20,-1.12,-3.09],[1.09,0.99,0.83,4.21]]  # aj Montri p91 [-0.43, 0.43, 5.12]
   #print(gaussian_elimination(m, SCALED_PIVOT))
 
+# gaussian elimination with scaled pivot
 # author: Worasait Suwannik
 # date: May 2015
  
