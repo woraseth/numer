@@ -1,4 +1,4 @@
-def euler(f, x0, y0, h, x):
+def euler_ivp(f, x0, y0, h, x):
   """
   Parameters
   ----------
@@ -19,7 +19,7 @@ def euler(f, x0, y0, h, x):
 
 if __name__ == '__main__':
   f = lambda x, y : y - x  # from https://www.math.purdue.edu/academic/files/courses/2010spring/MA26200/1_10.pdf
-  print(euler(f, 0, 0.5, 0.1, 1.0))
+  print(euler_ivp(f, 0, 0.5, 0.1, 1.0))
   
   #f = lambda x, y : -2*x**3 + 12*x**2 - 20*x + 10
   #print(euler(f, 0, 1, 0.5, 4))
