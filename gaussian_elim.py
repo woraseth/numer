@@ -21,9 +21,9 @@ def gaussian_elimination(m):
   for i in range(n):
     for j in range(i+1, n):
       m[j] = [m[j][k] - m[i][k]*m[j][i]/m[i][i] for k in range(n+1)]
-   
+
   if m[n-1][n-1] == 0: raise ValueError('No unique solution')
-  
+
   # backward substitution
   x = [0] * n
   for i in range(n-1, -1, -1):  # for i in reversed(range(n)):
