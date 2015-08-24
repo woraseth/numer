@@ -1,4 +1,4 @@
-def newton(f, j, x0, eps=1e-5, max_iteration=100):
+def newton_nonlinear(f, j, x0, eps=1e-5, max_iteration=100):
   """
   Parameters
   ----------
