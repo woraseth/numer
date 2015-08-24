@@ -1,6 +1,4 @@
 from matrix import height
- 
-from matrix import height
 
 def gaussian_elimination_with_pivot(m):
   """
