@@ -1,15 +1,10 @@
-# newton's method for solving system of nonlinear equation
-
-
 def newton(f, j, x0, eps=1e-5, max_iteration=100):
   """
   Parameters
   ----------
-  f : list of functions
-  j : list of list of functions
-    Jacobian matrix
-  x0 : list of float
-    initial guess
+  f  : list of functions
+  j  : list of list of functions : Jacobian matrix
+  x0 : list of floats            : initial guess
   
   Returns
   -------  
@@ -17,8 +12,7 @@ def newton(f, j, x0, eps=1e-5, max_iteration=100):
   
   Raises
   ------
-  ValueError
-      if solution doesn't converge
+  ValueError : if solution doesn't converge
   """
   for __ in range(max_iteration):
     m = [[fn(x0) for fn in j[i]] for i in range(len(j))]
@@ -37,6 +31,7 @@ def newton(f, j, x0, eps=1e-5, max_iteration=100):
   raise ValueError('Solution does not converge')
 
 if __name__ == '__main__':
+  '''
   from math import (sin, cos, e)
   
   # problem from aj Montri
@@ -65,6 +60,8 @@ if __name__ == '__main__':
   ]
   
   print(newton(f, j, [0, 2, -3]))
+  '''
+  
   """
   from math import *
   
@@ -95,5 +92,7 @@ if __name__ == '__main__':
   
   print(newton(f, j, [0.1, 0.1, -0.1]))
   """
+
+# newton's method for solving system of nonlinear equation
 # author : worasait suwannik
 # date   : jul 2015
