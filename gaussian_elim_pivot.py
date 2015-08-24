@@ -1,5 +1,7 @@
 from matrix import height
  
+from matrix import height
+
 def gaussian_elimination_with_pivot(m):
   """
   Parameters
@@ -21,17 +23,16 @@ def gaussian_elimination_with_pivot(m):
   for i in range(n):
     pivot(m, n, i)
     for j in range(i+1, n):
-      m[j] = [m[j][k] - (m[i][k]*m[j][i]/m[i][i]) for k in range(n+1)]
+      m[j] = [m[j][k] - m[i][k]*m[j][i]/m[i][i] for k in range(n+1)]
 
   if m[n-1][n-1] == 0: raise ValueError('No unique solution')
-   
+
   # backward substitution
   x = [0] * n
-  x[n-1] = m[n-1][n] / m[n-1][n-1]
-  for i in range(n-2, -1, -1):
+  for i in range(n-1, -1, -1):
     s = sum(m[i][j] * x[j] for j in range(i, n))
     x[i] = (m[i][n] - s) / m[i][i]
-  return x  
+  return x
 
 '''
 # shorter way to pivot but cannot run in trinket
