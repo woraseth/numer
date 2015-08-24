@@ -1,4 +1,4 @@
-from matrix import *
+from matrix import height
 
 def gaussian_elimination(m):
   """
@@ -27,7 +27,7 @@ def gaussian_elimination(m):
   # backward substitution
   x = [0] * n
   for i in range(n-1, -1, -1):  # for i in reversed(range(n)):
-    s = sum(m[i][j]*x[j] for j in range(i, n))
+    s = sum(m[i][j] * x[j] for j in range(i, n))
     x[i] = (m[i][n] - s) / m[i][i]
   return x
 
