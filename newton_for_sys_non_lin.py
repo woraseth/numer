@@ -1,4 +1,6 @@
-def newton_nonlinear(f, j, x0, sys_lin_meth, eps=1e-5, max_iteration=100):
+from gauss import *
+
+def newton_nonlinear(f, j, x0, sys_lin_meth=gaussian_elimination, eps=1e-5, max_iteration=100):
   """
   Parameters
   ----------
@@ -29,14 +31,13 @@ def newton_nonlinear(f, j, x0, sys_lin_meth, eps=1e-5, max_iteration=100):
   raise ValueError('Solution does not converge')
 
 if __name__ == '__main__':
-  '''
+  
   f = [lambda x : x[0]**2 + x[1]**2 - 17, 
        lambda x : 2*x[0]**(1/3) + x[1]*0.5 - 4]
   j = [[lambda x : 2*x[0], lambda x : 2*x[1]],
        [lambda x : (2/3)*x[0]**(-2/3), lambda x : 0.5*x[1]**-0.5]]
   x0 = [2, 3]
-  import gauss
-  x = newton_nonlinear(f, j, x0, gauss.gaussian_elimination)
+  x = newton_nonlinear(f, j, x0)
   print('solution is ', x)
   for i in range(len(f)):
     print('f[%d]=%f' % (i, f[i](x)))
@@ -70,17 +71,13 @@ if __name__ == '__main__':
     ]
   ]
   x0 = [0.1, 0.1, -0.1]
-  
-  #from gauss import *
-  #x = newton_nonlinear(f, j, x0, gaussian_elimination)
   from gauss_seidel import *
   def my_gs(m, ig=[1, 1, 1]): return gauss_seidel(m, ig)
   x = newton_nonlinear(f, j, x0, my_gs)
-  
   print('solution is ', x)
   for i in range(len(f)):
     print('f[%d]=%f' % (i, f[i](x)))
-  
+  '''
   
 
 # newton's method for solving system of nonlinear equation
