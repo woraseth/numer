@@ -12,7 +12,7 @@ def cubic_spline(x, y):
   """
   n = len(x) - 1
   h = [x[i+1]-x[i] for i in range(n)]
-  al = [3*(y[i+1]-y[i])/h[i] - 3*(y[i]-y[i-1])/h[i-1] for i in range(1,n)]
+  al = [3*((y[i+1]-y[i])/h[i] - (y[i]-y[i-1])/h[i-1]) for i in range(1,n)]
   al.insert(0,0)
   
   l = [1] * (n+1)
