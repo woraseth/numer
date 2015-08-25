@@ -20,10 +20,22 @@ for i in range(len(gq)):
   gq[i].sort(key=lambda x : x[0])
 
 def gaussian_quadrature(f, a, b, n=5):
+  '''
+  Parameters
+  ----------
+  f : function
+  a : number : start
+  b : number : stop
+  n : int   
+
+  Returns
+  -------  
+  float
+  '''
   g = lambda t : ((b-a)*t+b+a)/2
   return sum(w*f(g(p)) for (p,w) in gq[n]) * (b-a)/2
 
 if __name__ == '__main__':
-  from math import e
-  f = lambda x : e**-(x**2)
-  print(gaussian_quadrature(f, 1, 1.5, 3))
+  from math import sin
+  f = lambda x : x*sin(x)
+  print(gaussian_quadrature(f, 0, 2, 5))
