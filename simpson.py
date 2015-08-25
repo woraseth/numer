@@ -6,9 +6,9 @@ def simpson(fn, a, b, n):
   n : integer : must be even
   '''
   h = (b - a) / n
-  sum1 = sum(fn(a + (2*i + 1)*h) for i in range(0, int(n/2)))
-  sum2 = sum(fn(a + (2*i + 2)*h) for i in range(0, int(n/2) - 1))
-  return (fn(a) + fn(b) + 4*sum1 + 2*sum2) * h / 3;
+  sum1 = sum(fn(a + (2*i + 2)*h) for i in range(0, int(n/2) - 1))
+  sum2 = sum(fn(a + (2*i + 1)*h) for i in range(0, int(n/2)))
+  return (fn(a) + 2*sum1 + 4*sum2 + fn(b)) * h / 3
 
 if __name__ == '__main__':
   from math import cos, pi
